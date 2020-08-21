@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Inicio</title>
+{% endblock %}
+
+{% block body %}
+
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Falcone</a>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample01"
+        aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse collapse" id="navbarsExample01">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/scrapper">Scrapper</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Sobre nosotros</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-md-0">
+            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+        </form>
+    </div>
+</nav>
+
+<br>
+
+<div class="jumbotron">
+    <h1>Web Scrapper</h1>
+    <p class="lead">Esta página tiene como función extraer la información de los precios de las acciones de la
+        Bolsa de Valores de Lima. Lo que se tiene que realizar es seleccionar una de las empresas de las que se
+        quiere la información (tener en cuenta el nemónico) e indicar el rango de fechas para su extracción,
+        posteriormente se le mostrará un link de descarga para que pueda obtener los datos extraídos.</p>
+    <a class="btn btn-lg btn-primary" href="/scrapper" role="button">Web Scrapper BVL »</a>
+</div>
+
+{% endblock %}

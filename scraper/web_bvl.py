@@ -43,9 +43,9 @@ class WebBVL:
     la que, a partir de ella, se extraerá la información dentro de la página.
     """
 
-    def __init__(self, path_to_webdriver, wait_secs=5):
+    def __init__(self, wait_secs=5):
 
-        self.driver = webdriver.Chrome(path_to_webdriver)
+        self.driver = webdriver.Chrome()
         self.wait_time = wait_secs
         self.driver.get(URL)
 
@@ -107,8 +107,8 @@ class WebBVL:
         rango de fechas que se desee.
         """
 
-        init_date = datetime.strptime(init_date, '%d/%m/%Y').date()
-        end_date = datetime.strptime(end_date, '%d/%m/%Y').date()
+        init_date = datetime.strptime(init_date, '%Y-%m-%d').date()
+        end_date = datetime.strptime(end_date, '%Y-%m-%d').date()
 
         # Escribir en el buscador el código de la empresa.
         search = self.driver.find_element_by_name("textNemonico")
@@ -183,8 +183,7 @@ def main():
     Función para testear los avances del script.
     """
 
-    path_driver = "/usr/bin/chromedriver"
-    web = WebBVL(path_driver)
+    web = WebBVL()
     web.get_data_firm("ALICORC1", "20/09/2018", "20/11/2019")
 
 if __name__ == "__main__":

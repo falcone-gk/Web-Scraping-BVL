@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Scrapper</title>
+{% endblock %}
+
+{% block body %}
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Falcone</a>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample01"
+        aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse collapse" id="navbarsExample01">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Inicio</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/scrapper">Scrapper<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Sobre nosotros</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-md-0">
+            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+        </form>
+    </div>
+</nav>
+
+<br>
+
+<h1>Extracción de Datos de la BVL</h1>
+
+<br>
+
+<form action="/scrapper" method="POST">
+    <div class="row">
+        <div class="col-sm-8">
+
+            <label for="head_select">Escoja una empresa</label>
+            <select class="custom-select" size="20" name="list_firms" id="list_firms">
+                {% for code in codes %}
+                    <option value="{{code.id }}">{{ code.name + "  /  " + code.nemonico }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col text-center p-4">
+                    <label for="fecha inicial" >Fecha Inicial</label>
+                    <br>
+                    <input class="form-control-lg" type="date" name="init_date" id="init_date">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col text-center p-4">
+                    <label for="fecha final" >Fecha Final</label>
+                    <br>
+                    <input class="form-control-lg" type="date" name="end_date" id="end_date">
+                </div>
+            </div>
+
+            <div class="col text-center p-4">
+                <input type="submit" value="Extraer Datos">
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
